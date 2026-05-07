@@ -1,0 +1,289 @@
+{
+  "exercises": [
+    {
+      "name": "back squat",
+      "display_name": "Back squat",
+      "modality": "strength",
+      "exercise_class": "heavy_compound",
+      "ec_coefficient": 1.0,
+      "muscle_groups": [
+        "quads",
+        "glutes",
+        "core"
+      ],
+      "peak_e1rm_seed": 84.0
+    },
+    {
+      "name": "romanian deadlift",
+      "display_name": "Romanian deadlift",
+      "modality": "strength",
+      "exercise_class": "heavy_compound",
+      "ec_coefficient": 1.0,
+      "muscle_groups": [
+        "hamstrings",
+        "glutes",
+        "back"
+      ],
+      "peak_e1rm_seed": 97.5
+    },
+    {
+      "name": "flat barbell bench press",
+      "display_name": "Flat barbell bench press",
+      "modality": "strength",
+      "exercise_class": "heavy_compound",
+      "ec_coefficient": 1.0,
+      "muscle_groups": [
+        "chest",
+        "triceps",
+        "shoulders"
+      ],
+      "peak_e1rm_seed": 72.0
+    },
+    {
+      "name": "neutral grip pull-up",
+      "display_name": "Neutral grip pull-up",
+      "modality": "strength",
+      "exercise_class": "bw_compound",
+      "ec_coefficient": 0.95,
+      "muscle_groups": [
+        "back",
+        "biceps"
+      ],
+      "peak_e1rm_seed": 98.8
+    },
+    {
+      "name": "dips",
+      "display_name": "Dips",
+      "modality": "strength",
+      "exercise_class": "bw_compound",
+      "ec_coefficient": 0.95,
+      "muscle_groups": [
+        "chest",
+        "triceps"
+      ],
+      "peak_e1rm_seed": 117.0
+    },
+    {
+      "name": "incline dumbbell press",
+      "display_name": "Incline dumbbell press",
+      "modality": "strength",
+      "exercise_class": "db_compound",
+      "ec_coefficient": 0.92,
+      "muscle_groups": [
+        "chest",
+        "shoulders",
+        "triceps"
+      ],
+      "peak_e1rm_seed": 50.67
+    },
+    {
+      "name": "dumbbell row",
+      "display_name": "Dumbbell row",
+      "modality": "strength",
+      "exercise_class": "db_compound",
+      "ec_coefficient": 0.92,
+      "muscle_groups": [
+        "back",
+        "biceps"
+      ],
+      "peak_e1rm_seed": 39.0
+    },
+    {
+      "name": "leg press",
+      "display_name": "Leg press",
+      "modality": "strength",
+      "exercise_class": "machine_compound",
+      "ec_coefficient": 0.85,
+      "muscle_groups": [
+        "quads",
+        "glutes"
+      ],
+      "peak_e1rm_seed": 133.33
+    },
+    {
+      "name": "squat machine",
+      "display_name": "Squat machine",
+      "modality": "strength",
+      "exercise_class": "machine_compound",
+      "ec_coefficient": 0.85,
+      "muscle_groups": [
+        "quads",
+        "glutes"
+      ],
+      "peak_e1rm_seed": 60.0
+    },
+    {
+      "name": "machine chest press",
+      "display_name": "Machine chest press",
+      "modality": "strength",
+      "exercise_class": "machine_compound",
+      "ec_coefficient": 0.85,
+      "muscle_groups": [
+        "chest",
+        "triceps"
+      ],
+      "peak_e1rm_seed": 112.0
+    },
+    {
+      "name": "machine overhead press",
+      "display_name": "Machine overhead press",
+      "modality": "strength",
+      "exercise_class": "machine_compound",
+      "ec_coefficient": 0.85,
+      "muscle_groups": [
+        "shoulders",
+        "triceps"
+      ],
+      "peak_e1rm_seed": 84.0
+    },
+    {
+      "name": "seated cable row",
+      "display_name": "Seated cable row",
+      "modality": "strength",
+      "exercise_class": "machine_compound",
+      "ec_coefficient": 0.85,
+      "muscle_groups": [
+        "back",
+        "biceps"
+      ],
+      "peak_e1rm_seed": 112.0
+    },
+    {
+      "name": "neutral grip lat pulldown",
+      "display_name": "Neutral grip lat pulldown",
+      "modality": "strength",
+      "exercise_class": "machine_compound",
+      "ec_coefficient": 0.85,
+      "muscle_groups": [
+        "back",
+        "biceps"
+      ],
+      "peak_e1rm_seed": 120.0
+    },
+    {
+      "name": "seated hamstring curl",
+      "display_name": "Seated hamstring curl",
+      "modality": "strength",
+      "exercise_class": "isolation",
+      "ec_coefficient": 0.7,
+      "muscle_groups": [
+        "hamstrings"
+      ],
+      "peak_e1rm_seed": 51.1
+    },
+    {
+      "name": "leg extension",
+      "display_name": "Leg extension",
+      "modality": "strength",
+      "exercise_class": "isolation",
+      "ec_coefficient": 0.7,
+      "muscle_groups": [
+        "quads"
+      ],
+      "peak_e1rm_seed": 56.0
+    },
+    {
+      "name": "bicep curl",
+      "display_name": "Bicep curl",
+      "modality": "strength",
+      "exercise_class": "isolation",
+      "ec_coefficient": 0.7,
+      "muscle_groups": [
+        "biceps"
+      ],
+      "peak_e1rm_seed": 26.25
+    },
+    {
+      "name": "cable tricep pushdown",
+      "display_name": "Cable tricep pushdown",
+      "modality": "strength",
+      "exercise_class": "isolation",
+      "ec_coefficient": 0.7,
+      "muscle_groups": [
+        "triceps"
+      ],
+      "peak_e1rm_seed": 37.5
+    },
+    {
+      "name": "pec deck fly",
+      "display_name": "Pec deck fly",
+      "modality": "strength",
+      "exercise_class": "isolation",
+      "ec_coefficient": 0.7,
+      "muscle_groups": [
+        "chest"
+      ],
+      "peak_e1rm_seed": 14.0
+    },
+    {
+      "name": "cable chest fly",
+      "display_name": "Cable chest fly",
+      "modality": "strength",
+      "exercise_class": "isolation",
+      "ec_coefficient": 0.7,
+      "muscle_groups": [
+        "chest"
+      ],
+      "peak_e1rm_seed": 30.0
+    },
+    {
+      "name": "face pulls",
+      "display_name": "Face pulls",
+      "modality": "strength",
+      "exercise_class": "corrective",
+      "ec_coefficient": 0.55,
+      "muscle_groups": [
+        "shoulders",
+        "upper_back"
+      ],
+      "peak_e1rm_seed": 25.0
+    },
+    {
+      "name": "reverse pec deck",
+      "display_name": "Reverse pec deck",
+      "modality": "strength",
+      "exercise_class": "corrective",
+      "ec_coefficient": 0.55,
+      "muscle_groups": [
+        "shoulders"
+      ],
+      "peak_e1rm_seed": 21.0
+    },
+    {
+      "name": "abductor machine",
+      "display_name": "Abductor machine",
+      "modality": "strength",
+      "exercise_class": "corrective",
+      "ec_coefficient": 0.55,
+      "muscle_groups": [
+        "glutes"
+      ],
+      "peak_e1rm_seed": 67.5
+    }
+  ],
+  "aliases": {
+    "barbell squat": "back squat",
+    "bicep curls": "bicep curl",
+    "bicep Curls": "bicep curl",
+    "cable Chest Fly": "cable chest fly",
+    "cable tricep pulldown": "cable tricep pushdown",
+    "tricep pulldown": "cable tricep pushdown",
+    "leg press machine": "leg press",
+    "dips (until failure)": "dips",
+    "machine pulldown": "neutral grip lat pulldown",
+    "lateral pulldown": "neutral grip lat pulldown",
+    "neautral grip pulldown": "neutral grip lat pulldown",
+    "neutral grip pull ups (until failure)": "neutral grip pull-up",
+    "abductors": "abductor machine",
+    "abductor": "abductor machine",
+    "machine row": "seated cable row",
+    "leg curl": "seated hamstring curl",
+    "leg extensions": "leg extension",
+    "machine reverse pec deck flies": "reverse pec deck",
+    "pec fly machine": "pec deck fly",
+    "incline dumbbell press neutral grip": "incline dumbbell press"
+  },
+  "bodyweight_kg": 78,
+  "session_median_power": 3161,
+  "source": "Backfilled from TrainerGPT_26_.xlsx \u2014 29 sessions, 113 strength entries, 22 unique canonical exercises"
+}
