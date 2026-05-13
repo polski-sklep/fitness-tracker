@@ -30,7 +30,9 @@ from app.db import SessionLocal
 from app.models import Exercise, Session, StrengthSet
 from app.services.power_score import (
     epley_e1rm, exercise_power, session_power, index_vs_median,
+    TIME_BENCHMARKS_MIN,
 )
+from app.services.pr_detector import mark_prs_for_session
 from app.services.session_classifier import classify_session_type
 
 BODYWEIGHT_KG = 78
@@ -52,7 +54,9 @@ def parse_minutes(raw):
 
 
 def is_bodyweight_movement(item: str) -> bool:
-    s = (item or "").lower()
+    if item is None or pd.isna(item):
+        return False
+    s = str(item).lower()
     return any(k in s for k in (
         "pull up", "pull-up", "pullup",
         "dip", "push up", "push-up", "pushup",
@@ -101,6 +105,7 @@ def ensure_exercise(db, canonical_name: str, by_name: dict):
             exercise_class="machine_compound",
             ec_coefficient=0.85,
             muscle_groups=[],
+            peak_e1rm_seed=0,
         )
     else:
         ex = Exercise(
@@ -110,6 +115,7 @@ def ensure_exercise(db, canonical_name: str, by_name: dict):
             exercise_class=seed_entry["exercise_class"],
             ec_coefficient=seed_entry["ec_coefficient"],
             muscle_groups=seed_entry["muscle_groups"],
+            peak_e1rm_seed=seed_entry.get("peak_e1rm_seed", 0),
         )
     db.add(ex)
     db.flush()
@@ -153,6 +159,7 @@ def main(xlsx_path: str):
         for day, rows in strength.groupby("Day"):
             head = rows.iloc[0]
             session_type = session_type_from_name(head["Session"])
+            bench = TIME_BENCHMARKS_MIN.get(session_type, 85.0) or 85.0
 
             sess = Session(
                 started_at=day,
@@ -162,6 +169,7 @@ def main(xlsx_path: str):
                 sensitivity=int(round(head["Sensitivity"])) if pd.notna(head["Sensitivity"]) else None,
                 quality=int(round(head["Quality"])) if pd.notna(head["Quality"]) else None,
                 time_minutes=int(head["time_min"]) if pd.notna(head["time_min"]) else None,
+                time_benchmark_minutes=int(bench),
                 notes=f"Backfilled from {Path(xlsx_path).name}",
             )
             db.add(sess)
@@ -175,6 +183,7 @@ def main(xlsx_path: str):
                 # Spreadsheet stores aggregate "3 sets × 10 reps @ 40kg" — expand to 3 set rows
                 # All identical since we have no per-set granularity historically.
                 set_rows = []
+                first_set = None
                 for i in range(int(r["Sets"])):
                     s = StrengthSet(
                         session_id=sess.id,
@@ -188,6 +197,7 @@ def main(xlsx_path: str):
                         est_1rm=epley_e1rm(r["weight_kg"], int(r["Reps"])),
                     )
                     db.add(s)
+                    first_set = first_set or s
                     set_rows.append({
                         "reps": int(r["Reps"]),
                         "weight_kg": float(r["weight_kg"]),
@@ -204,11 +214,11 @@ def main(xlsx_path: str):
                     peak_e1rm=max(seed_peak, epley_e1rm(r["weight_kg"], int(r["Reps"]))),
                     readiness=sess.readiness or 8,
                 )
+                if first_set:
+                    first_set.exercise_power = ep
                 ex_powers.append(ep)
 
             # Session-level computation
-            from app.services.power_score import TIME_BENCHMARKS_MIN
-            bench = TIME_BENCHMARKS_MIN.get(session_type, 85.0)
             total = session_power(
                 exercise_powers=ex_powers,
                 quality=sess.quality or 8,
@@ -219,6 +229,7 @@ def main(xlsx_path: str):
             )
             sess.total_power = total
             sess.index_vs_median = index_vs_median(total)
+            mark_prs_for_session(db, sess.id)
 
         db.commit()
         print("Backfill committed")

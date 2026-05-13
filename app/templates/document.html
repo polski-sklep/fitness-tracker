@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} · Jacob's Fitness Tracker{% endblock %}
+{% block content %}
+<section class="rounded-2xl p-5" style="background: #0d1117;">
+  <div class="mb-4 flex items-center justify-between gap-4">
+    <a href="/" class="text-sm font-bold text-[#3b82f6]">← Dashboard</a>
+    {% if download_url %}
+      <a href="{{ download_url }}" class="rounded-xl bg-[#facc15] px-3 py-2 text-sm font-bold text-[#050810] shadow-lg shadow-yellow-500/10">Download</a>
+    {% endif %}
+  </div>
+  <h2 class="mb-4 text-2xl font-bold">{{ title }}</h2>
+  <div class="document-body text-slate-300">{{ body_html|safe }}</div>
+</section>
+{% endblock %}

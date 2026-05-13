@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Session · Jacob's Fitness Tracker{% endblock %}
+{% block content %}
+<section class="rounded-2xl bg-slate-900 p-5">
+  <a href="/" class="text-sm font-bold text-[#3b82f6]">← Dashboard</a>
+  <h1 class="mt-3 text-3xl font-bold">{{ session.started_at.date() }} · {{ session.session_type }}</h1>
+  <p class="mt-2 text-slate-300">R/F/S/Q {{ session.readiness or "—" }}/{{ session.fatigue or "—" }}/{{ session.sensitivity or "—" }}/{{ session.quality or "—" }} · {{ session.time_minutes or "—" }} min</p>
+  <p class="mt-2 text-xl">Power {{ session.total_power|round(1) if session.total_power else "—" }} · Index {{ session.index_vs_median|round(1) if session.index_vs_median else "—" }}</p>
+</section>
+
+{% if grouped %}
+<section class="mt-6 rounded-2xl bg-slate-900 p-5">
+  <h2 class="mb-4 text-lg font-semibold">Strength</h2>
+  {% for exercise, sets in grouped.items() %}
+    <div class="mb-6">
+      <a class="text-lg font-semibold text-emerald-300" href="/exercises/{{ exercise.id }}">{{ exercise.display_name }}</a>
+      <table class="mt-2 w-full text-sm">
+        <thead class="text-left text-slate-400"><tr><th>Set</th><th>Reps</th><th>Weight</th><th>RIR</th><th>e1RM</th><th>Power</th><th>PR</th></tr></thead>
+        <tbody>
+        {% for set in sets %}
+          <tr class="border-t border-slate-800"><td>{{ set.set_index }}</td><td>{{ set.reps }}</td><td>{{ set.weight_kg }} kg</td><td>{{ set.rir or "—" }}</td><td>{{ set.est_1rm|round(1) }}</td><td>{{ set.exercise_power|round(1) if set.exercise_power else "—" }}</td><td>{% if set.is_pr %}<span class="text-yellow-300">●</span>{% endif %}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% endfor %}
+</section>
+{% endif %}
+
+{% if session.cycling_efforts %}
+<section class="mt-6 rounded-2xl bg-slate-900 p-5">
+  <h2 class="mb-4 text-lg font-semibold">Cycling</h2>
+  {% for effort in session.cycling_efforts %}
+  <p>{{ effort.distance_km or "—" }} km · {{ effort.kcal or "—" }} kcal · {{ effort.duration_min or "—" }} min · avg HR {{ effort.avg_hr or "—" }}</p>
+  {% endfor %}
+</section>
+{% endif %}
+
+{% if session.notes %}<section class="mt-6 rounded-2xl bg-slate-900 p-5 text-slate-300">{{ session.notes }}</section>{% endif %}
+{% endblock %}

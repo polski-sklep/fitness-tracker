@@ -263,6 +263,8 @@
   ],
   "aliases": {
     "barbell squat": "back squat",
+    "flat bench": "flat barbell bench press",
+    "flat bench press": "flat barbell bench press",
     "bicep curls": "bicep curl",
     "bicep Curls": "bicep curl",
     "cable Chest Fly": "cable chest fly",
@@ -281,9 +283,36 @@
     "leg extensions": "leg extension",
     "machine reverse pec deck flies": "reverse pec deck",
     "pec fly machine": "pec deck fly",
-    "incline dumbbell press neutral grip": "incline dumbbell press"
+    "incline dumbbell press neutral grip": "incline dumbbell press",
+    "machine ohp": "machine overhead press",
+    "machine ohp press": "machine overhead press",
+    "ohp": "machine overhead press"
   },
   "bodyweight_kg": 78,
   "session_median_power": 3161,
-  "source": "Backfilled from TrainerGPT_26_.xlsx \u2014 29 sessions, 113 strength entries, 22 unique canonical exercises"
+  "source": "Backfilled from TrainerGPT_26_.xlsx \u2014 29 sessions, 113 strength entries, 22 unique canonical exercises",
+  "seed_peak_weights": {
+    "back squat": 70.0,
+    "romanian deadlift": 65.0,
+    "flat barbell bench press": 65.0,
+    "neutral grip pull-up": 78.0,
+    "dips": 78.0,
+    "incline dumbbell press": 22.0,
+    "dumbbell row": 30.0,
+    "leg press": 120.0,
+    "squat machine": 40.0,
+    "machine chest press": 80.0,
+    "machine overhead press": 60.0,
+    "seated cable row": 80.0,
+    "neutral grip lat pulldown": 80.0,
+    "seated hamstring curl": 35.0,
+    "leg extension": 40.0,
+    "bicep curl": 17.5,
+    "cable tricep pushdown": 25.0,
+    "pec deck fly": 10.0,
+    "cable chest fly": 22.0,
+    "face pulls": 17.5,
+    "reverse pec deck": 15.0,
+    "abductor machine": 50.0
+  }
 }

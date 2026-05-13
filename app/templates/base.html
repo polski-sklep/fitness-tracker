@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Jacob's Fitness Tracker{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <style>
+    body { background: #050810; }
+    .site-header {
+      align-items: center;
+      display: flex;
+      gap: 1rem;
+      justify-content: space-between;
+      padding: 0.25rem 0;
+    }
+    .dashboard-title {
+      align-items: center;
+      color: #f8fafc;
+      display: inline-flex;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    .dashboard-title-mark {
+      align-items: center;
+      background: linear-gradient(135deg, #3b82f6, #60a5fa);
+      border: 1px solid rgba(147, 197, 253, 0.35);
+      border-radius: 0.95rem;
+      box-shadow: 0 14px 35px rgba(59, 130, 246, 0.22);
+      color: #eff6ff;
+      display: inline-flex;
+      font-family: 'Anton', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      height: 2.45rem;
+      justify-content: center;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      width: 2.45rem;
+    }
+    .dashboard-title-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.12rem;
+    }
+    .dashboard-title-name {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.65rem;
+      font-weight: 400;
+      letter-spacing: 0.025em;
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+    .dashboard-title-kicker {
+      color: #94a3b8;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    .dashboard-title:hover .dashboard-title-name {
+      color: #bfdbfe;
+    }
+    .document-body {
+      font-size: 0.98rem;
+      line-height: 1.75;
+      overflow-wrap: anywhere;
+    }
+    .document-body h2,
+    .document-body h3,
+    .document-body h4 {
+      color: #f8fafc;
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 1.75rem 0 0.75rem;
+    }
+    .document-body h2 { font-size: 1.5rem; }
+    .document-body h3 { font-size: 1.25rem; }
+    .document-body h4 { font-size: 1.1rem; }
+    .document-body p { margin: 0.8rem 0; }
+    .document-body ul {
+      list-style: disc;
+      margin: 0.75rem 0 1.25rem 1.5rem;
+      padding: 0;
+    }
+    .document-body li { margin: 0.55rem 0; }
+    .document-body a {
+      color: #60a5fa;
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-color: rgba(96, 165, 250, 0.45);
+      text-underline-offset: 0.18em;
+    }
+    .document-body a:hover { color: #93c5fd; }
+    .document-body strong {
+      color: #e2e8f0;
+      font-weight: 800;
+    }
+    .document-body code {
+      background: rgba(148, 163, 184, 0.12);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      border-radius: 0.35rem;
+      color: #e2e8f0;
+      padding: 0.05rem 0.25rem;
+    }
+    .document-body hr {
+      border: 0;
+      border-top: 1px solid rgba(148, 163, 184, 0.16);
+      margin: 1.5rem 0;
+    }
+    @media (max-width: 640px) {
+      .dashboard-title-mark {
+        height: 2.25rem;
+        width: 2.25rem;
+      }
+      .dashboard-title-name {
+        font-size: 1.25rem;
+      }
+      .dashboard-title-kicker {
+        font-size: 0.62rem;
+        letter-spacing: 0.11em;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100">
+  <main class="mx-auto max-w-6xl px-4 py-6">
+    <header class="site-header mb-8">
+      <h1>
+        <a href="/" class="dashboard-title" aria-label="Jacob's Fitness Tracker dashboard">
+          <span class="dashboard-title-mark">FAF</span>
+          <span class="dashboard-title-text">
+            <span class="dashboard-title-kicker">Jacob’s</span>
+            <span class="dashboard-title-name">Fitness Tracker</span>
+          </span>
+        </a>
+      </h1>
+      <span class="rounded-full bg-emerald-500/10 px-3 py-1 text-sm text-emerald-300">Tailscale-only</span>
+    </header>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

@@ -1,0 +1,5 @@
+fitness.YOUR-TAILNET.ts.net {
+    bind 100.x.x.x
+    reverse_proxy 127.0.0.1:8000
+}
+

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{{ exercise.display_name }} · Jacob's Fitness Tracker{% endblock %}
+{% block content %}
+<section class="rounded-2xl bg-slate-900 p-5">
+  <a href="/" class="text-sm font-bold text-[#3b82f6]">← Dashboard</a>
+  <h1 class="mt-3 text-3xl font-bold">{{ exercise.display_name }}</h1>
+  <p class="mt-2 text-slate-300">{{ exercise.exercise_class or "cycling" }} · EC {{ exercise.ec_coefficient }} · {{ exercise.muscle_groups|join(", ") }}</p>
+</section>
+
+<section class="mt-6 rounded-2xl bg-slate-900 p-5">
+  <h2 class="mb-4 text-lg font-semibold">Progress</h2>
+  <canvas id="exerciseChart"></canvas>
+</section>
+
+<section class="mt-6 rounded-2xl bg-slate-900 p-5">
+  <h2 class="mb-4 text-lg font-semibold">Last 20 Sets</h2>
+  <table class="w-full text-sm">
+    <thead class="text-left text-slate-400"><tr><th>Date</th><th>Reps</th><th>Weight</th><th>e1RM</th><th>PR</th></tr></thead>
+    <tbody>
+    {% for set in sets %}
+      <tr class="border-t border-slate-800"><td>{{ set.session.started_at.date() }}</td><td>{{ set.reps }}</td><td>{{ set.weight_kg }} kg</td><td>{{ set.est_1rm|round(1) }}</td><td>{% if set.is_pr %}<span class="text-yellow-300">●</span>{% endif %}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<script>
+fetch('/api/chart/exercises/{{ exercise.id }}').then(r => r.json()).then(config => {
+  new Chart(document.getElementById('exerciseChart'), {type: 'line', data: config, options: {responsive: true, scales: {y: {beginAtZero: true}}}});
+});
+</script>
+{% endblock %}
